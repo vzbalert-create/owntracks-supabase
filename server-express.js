@@ -13,16 +13,12 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // --- Endpoint POST ---
 app.post('/api/locations', async (req, res) => {
-  const data = req.body;
+  const { account, amount } = req.body;
 
-  // Insérer dans la table "locations"
   const { error } = await supabase
     .from('locations')
     .insert([
-      {
-        "ACCOUNT": "TEST_NODEJS",
-        "AMOUNT" : 1.2
-      }
+      { account, amount }
     ]);
 
   if (error) {
@@ -30,12 +26,12 @@ app.post('/api/locations', async (req, res) => {
     return res.status(500).json({ error: 'Insertion failed' });
   }
 
-  console.log('✅ Position insérée dans Supabase:', data);
+  console.log('✅ Position insérée dans Supabase:', { account, amount });
   res.json({ status: 'ok' });
 });
 
-// Post 
-app.post('/', (req, res) => res.send('Express + Supabase 🚀'));
+// GET simple
+app.get('/', (req, res) => res.send('Express + Supabase 🚀'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Serveur sur http://localhost:${PORT}`));
