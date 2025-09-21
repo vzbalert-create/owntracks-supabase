@@ -7,8 +7,8 @@ const app = express();
 app.use(express.json());
 
 // --- Connexion Supabase ---
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY; // clé secrète
+const supabaseUrl = "https://gpbvhgglhpdjhijyoekc.supabase.co/rest/v1/TRANSACTION";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwYnZoZ2dsaHBkamhpanlvZWtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3ODAxNTQsImV4cCI6MjA3MzM1NjE1NH0.yUDGxkm9ikcRMcL5J995mYFtr6kUNvv7Yc8GUGiYNHU"; // clé secrète
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // --- Endpoint POST ---
