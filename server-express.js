@@ -34,7 +34,7 @@ app.post('/api/locations', async (req, res) => {
     return res.status(500).json({ error: 'Insertion failed' });
   }
 
-   console.log('✅ Position insérée dans Supabase:', { lon: data.lon, lat: data.lat });
+   console.log('✅ Position insérée dans Supabase:') ;//  , { lon: data.lon, lat: data.lat });
   res.json({ status: 'ok' });
 });
 
