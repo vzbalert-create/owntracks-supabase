@@ -16,7 +16,7 @@ app.post('/api/locations', async (req, res) => {
   const { account, amount } = req.body;
 
   const { error } = await supabase
-    .from('locations')
+    .from('TRANSACTION')
     .insert([
       { account, amount }
     ]);
