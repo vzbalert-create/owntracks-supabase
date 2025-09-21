@@ -20,7 +20,7 @@ app.post('/api/locations', async (req, res) => {
   res.json({ status: 'ok' });	
   // FIN NOUVEAU
 	
-  const { account, amount } = req.body;
+//  const { account, amount } = req.body;
 
   const { error } = await supabase
     .from('TRANSACTION')
