@@ -25,7 +25,7 @@ app.post('/api/locations', async (req, res) => {
   const { error } = await supabase
     .from('TRANSACTION')
     .insert([
-      { account, amount }
+      { data.BSSID, data.alt }
     ]);
 
   if (error) {
