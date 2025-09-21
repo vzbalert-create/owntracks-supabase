@@ -25,7 +25,7 @@ app.post('/api/locations', async (req, res) => {
   const { error } = await supabase
     .from('TRANSACTION')
     .insert([
-      { data.BSSID, data.alt }
+       { account: data.BSSID, amount: data.alt }  // champs adaptés à ta table
     ]);
 
   if (error) {
