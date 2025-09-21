@@ -8,25 +8,19 @@ app.use(express.json());
 
 // --- Connexion Supabase ---
 const supabaseUrl = "https://gpbvhgglhpdjhijyoekc.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwYnZoZ2dsaHBkamhpanlvZWtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3ODAxNTQsImV4cCI6MjA3MzM1NjE1NH0.yUDGxkm9ikcRMcL5J995mYFtr6kUNvv7Yc8GUGiYNHU"; // clé secrète
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwYnZoZ2dsaHBkamhpanlvZWtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3ODAxNTQsImV4cCI6MjA3MzM1NjE1NH0.yUDGxkm9ikcRMcL5J995mYFtr6kUNvv7Yc8GUGiYNHU"; 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // --- Endpoint POST ---
 app.post('/api/locations', async (req, res) => {
-  
-  // NOUVEAU
   const data = req.body;
   console.log('📍 Position reçue (Express):', data);
-  res.json({ status: 'ok' });	
-  // FIN NOUVEAU
-	
-//  const { account, amount } = req.body;
 
+  // Insertion dans Supabase
   const { error } = await supabase
     .from('TRANSACTION')
     .insert([
-//       { account: data.BSSID, amount: data.lat }   champs adaptés à ta table
-	   { lon: data.lon, lat: data.lat }  // champs adaptés à ta table
+      { lon: data.lon, lat: data.lat }  // champs adaptés à ta table
     ]);
 
   if (error) {
@@ -34,11 +28,11 @@ app.post('/api/locations', async (req, res) => {
     return res.status(500).json({ error: 'Insertion failed' });
   }
 
-   console.log('✅ Position insérée dans Supabase:') ;//  , { lon: data.lon, lat: data.lat });
+  console.log('✅ Position insérée dans Supabase:', { lon: data.lon, lat: data.lat });
   res.json({ status: 'ok' });
 });
 
-// GET simple
+// --- Endpoint GET simple ---
 app.get('/', (req, res) => res.send('Express + Supabase 🚀'));
 
 const PORT = process.env.PORT || 3000;
