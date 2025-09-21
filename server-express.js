@@ -26,7 +26,7 @@ app.post('/api/locations', async (req, res) => {
     .from('TRANSACTION')
     .insert([
 //       { account: data.BSSID, amount: data.lat }   champs adaptés à ta table
-	   { LON: data.lon, LAT: data.lat }  // champs adaptés à ta table
+	   { lon: data.lon, lat: data.lat }  // champs adaptés à ta table
     ]);
 
   if (error) {
