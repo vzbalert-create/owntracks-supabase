@@ -13,6 +13,13 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // --- Endpoint POST ---
 app.post('/api/locations', async (req, res) => {
+  
+  // NOUVEAU
+  const data = req.body;
+  console.log('📍 Position reçue (Express):', data);
+  res.json({ status: 'ok' });	
+  // FIN NOUVEAU
+	
   const { account, amount } = req.body;
 
   const { error } = await supabase
