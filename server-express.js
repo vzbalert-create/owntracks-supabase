@@ -20,7 +20,7 @@ app.post('/api/locations', async (req, res) => {
   const { error } = await supabase
     .from('LOGGER')
     .insert([
-      { obj: data.topic,  lon: data.lon, lat: data.lat , pre: data.acc , alt: data.alt , now: data.tst }  // champs adaptés à ta table
+      { obj: data.topic,  lon: data.lon, lat: data.lat , pre: data.acc , alt: data.alt , now: data.created_at }  // champs adaptés à ta table
     ]);
 
   if (error) {
