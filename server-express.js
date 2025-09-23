@@ -18,9 +18,9 @@ app.post('/api/locations', async (req, res) => {
 
   // Insertion dans Supabase
   const { error } = await supabase
-    .from('TRANSACTION')
+    .from('LOGGER')
     .insert([
-      { account: data.topic,  lon: data.lon, lat: data.lat }  // champs adaptés à ta table
+      { obj: data.topic,  lon: data.lon, lat: data.lat , pre: data.acc , alt: data.alt , now: data.tst }  // champs adaptés à ta table
     ]);
 
   if (error) {
