@@ -40,6 +40,7 @@ app.post('/api/locations', async (req, res) => {
 
   console.log('Message Telegram **************');
 
+/*
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -48,7 +49,7 @@ app.post('/api/locations', async (req, res) => {
           text: data.lon
         })
       })
-  
+ */ 
   
 });
 
