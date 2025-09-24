@@ -7,9 +7,16 @@ const app = express();
 app.use(express.json());
 
 // --- Connexion Supabase ---
+
+const BOT_TOKEN = "8211651169:AAEZWvA_ShQErMaTytB5f5vH_dBorDDj0ng";   // ton token BotFather
+const CHAT_ID = "578740783";          // ton chat_id
+
+
 const supabaseUrl = "https://gpbvhgglhpdjhijyoekc.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwYnZoZ2dsaHBkamhpanlvZWtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3ODAxNTQsImV4cCI6MjA3MzM1NjE1NH0.yUDGxkm9ikcRMcL5J995mYFtr6kUNvv7Yc8GUGiYNHU"; 
 const supabase = createClient(supabaseUrl, supabaseKey);
+
+
 
 // --- Endpoint POST ---
 app.post('/api/locations', async (req, res) => {
@@ -30,6 +37,18 @@ app.post('/api/locations', async (req, res) => {
 
   console.log('✅ Position insérée dans Supabase:', { lon: data.lon, lat: data.lat });
   res.json({ status: 'ok' });
+
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: "Test telegram"
+        })
+      })
+  
+  
 });
 
 // --- Endpoint GET simple ---
