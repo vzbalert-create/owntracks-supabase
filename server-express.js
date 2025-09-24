@@ -38,6 +38,7 @@ app.post('/api/locations', async (req, res) => {
   console.log('✅ Position insérée dans Supabase:', { lon: data.lon, lat: data.lat });
   res.json({ status: 'ok' });
 
+  console.log('Message Telegram');
 
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: "POST",
