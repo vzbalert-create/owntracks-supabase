@@ -58,7 +58,7 @@ Latitude = data.lat;
 });
 
 // --- Endpoint GET simple ---
-app.get('/', (req, res) => res.send(Longitude));
+app.get('/', (req, res) => res.send('yryryry'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Serveur sur http://localhost:${PORT}`));
