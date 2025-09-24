@@ -16,8 +16,8 @@ const supabaseUrl = "https://gpbvhgglhpdjhijyoekc.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwYnZoZ2dsaHBkamhpanlvZWtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3ODAxNTQsImV4cCI6MjA3MzM1NjE1NH0.yUDGxkm9ikcRMcL5J995mYFtr6kUNvv7Yc8GUGiYNHU"; 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-var Longitude float ;
-var Latitude  float ;
+let Longitude;
+let Latitude;
 
 
 // --- Endpoint POST ---
