@@ -45,7 +45,7 @@ app.post('/api/locations', async (req, res) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: CHAT_ID,
-          text: "Test telegram"
+          text: data.lon
         })
       })
   
