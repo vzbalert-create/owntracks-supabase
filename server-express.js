@@ -16,6 +16,8 @@ const supabaseUrl = "https://gpbvhgglhpdjhijyoekc.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdwYnZoZ2dsaHBkamhpanlvZWtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc3ODAxNTQsImV4cCI6MjA3MzM1NjE1NH0.yUDGxkm9ikcRMcL5J995mYFtr6kUNvv7Yc8GUGiYNHU"; 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+var Longitude float ;
+var Latitude  float ;
 
 
 // --- Endpoint POST ---
@@ -40,6 +42,8 @@ app.post('/api/locations', async (req, res) => {
 
   console.log('Message Telegram **************');
 
+Longitude = data.lon;
+Latitude = data.lat;
 /*
   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: "POST",
@@ -54,7 +58,7 @@ app.post('/api/locations', async (req, res) => {
 });
 
 // --- Endpoint GET simple ---
-app.get('/', (req, res) => res.send('Express + Supabase 🚀'));
+app.get('/', (req, res) => res.send(Longitude));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Serveur sur http://localhost:${PORT}`));
